@@ -1,0 +1,5 @@
+claude-agent-sdk==0.2.177
+httpx[http2]==0.28.1
+pillow==13.0.0
+pyyaml==6.0.3
+hijridate==2.6.0

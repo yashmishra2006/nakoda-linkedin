@@ -1,0 +1,11 @@
+# Nakoda AI's own photos, for posts about us (team, office, events we attend).
+# Drop high-resolution JPEG/PNG files in this folder and describe each one; the
+# planner reads the descriptions and looks at the picture before using it.
+#
+# images:
+#   - file: team-gitex-2026.jpg
+#     description: Four of the Nakoda team at our GITEX Global 2026 stand, Dubai World Trade Centre
+#     people: [Yash Mishra]     # only people who agreed to appear
+#     use_for: [event, insight]
+#     taken: 2026-10-14
+images: []

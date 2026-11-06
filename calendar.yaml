@@ -1,0 +1,172 @@
+# Occasions the desk knows about. The planner sees everything coming up in the
+# next two weeks and drafts a post for each one that should get one, a few
+# days ahead, so the image and words are settled before the day.
+#
+# rule:
+#   fixed: "MM-DD"            same Gregorian date every year
+#   hijri: "MM-DD"            Islamic (Umm al-Qura) date; the exact day depends on
+#                             the moon sighting, so these need confirmation (below)
+#   dates: {2026: "MM-DD"}    dates that move (Diwali, conferences); list each year
+# importance:
+#   high      always post (unless a mourning period is on)
+#   medium    post unless something more important is happening that week
+#   optional  the planner decides; skipping is normal
+# tone: celebratory | warm | reflective | solemn
+# confirm: true -> not published until `desk calendar refresh` (Claude + web
+#   search) finds the official announcement of the date. Hijri dates always
+#   need it.
+# post_time: morning (08:40-10:30) | midday | evening | eve (the evening before)
+#
+# Conferences and events (GITEX, Dubai AI Week, WGS, ...) change dates every
+# year: `desk calendar refresh` looks them up and stores them; you can also
+# list a confirmed one here under `dates`.
+
+occasions:
+  # ---------------------------------------------------------------- national
+  - key: uae-flag-day
+    name: UAE Flag Day
+    rule: {fixed: "11-03"}
+    importance: high
+    tone: celebratory
+    post_time: morning
+    notes: >
+      Marks the anniversary of Sheikh Khalifa bin Zayed Al Nahyan becoming President in 2004;
+      the flag is raised across the country at 11am. Pride, unity, the flag itself.
+
+  - key: commemoration-day
+    name: Commemoration Day
+    rule: {fixed: "11-30"}
+    importance: high
+    tone: solemn
+    post_time: morning
+    notes: >
+      Honours the Emirati martyrs who gave their lives for the nation. Dignified and brief. No emoji,
+      no hashtags beyond #CommemorationDay at most, nothing about Nakoda's services.
+
+  - key: uae-national-day
+    name: Eid Al Etihad (UAE National Day)
+    rule: {fixed: "12-02"}
+    importance: high
+    tone: celebratory
+    post_time: morning
+    notes: >
+      The union of the emirates on 2 December 1971 ({ordinal} Eid Al Etihad this year). The biggest
+      occasion of the year for a UAE company. Warm, proud, specific to the country's story; a single
+      flag emoji is fine.
+
+  - key: emirati-womens-day
+    name: Emirati Women's Day
+    rule: {fixed: "08-28"}
+    importance: medium
+    tone: warm
+    post_time: morning
+    notes: Celebrates Emirati women's contribution. Specific examples beat generic praise.
+
+  - key: emirati-childrens-day
+    name: Emirati Children's Day
+    rule: {fixed: "03-15"}
+    importance: optional
+    tone: warm
+    post_time: morning
+
+  - key: mbr-accession-day
+    name: Accession Day of Sheikh Mohammed bin Rashid Al Maktoum
+    rule: {fixed: "01-04"}
+    importance: optional
+    tone: warm
+    post_time: morning
+    notes: Anniversary of His Highness becoming Ruler of Dubai in 2006. Respectful, not sycophantic.
+
+  - key: new-year
+    name: New Year's Day
+    rule: {fixed: "01-01"}
+    importance: medium
+    tone: warm
+    post_time: morning
+    notes: A short, genuine note. Avoid "new year, new me" clichés and year-in-review bragging.
+
+  # ---------------------------------------------------------------- Islamic
+  - key: ramadan
+    name: Start of Ramadan
+    rule: {hijri: "09-01"}
+    confirm: true
+    importance: high
+    tone: warm
+    post_time: morning
+    notes: "Ramadan Kareem. Calm and sincere; no sales angle. Changed working hours are a natural detail."
+
+  - key: zayed-humanitarian-day
+    name: Zayed Humanitarian Day
+    rule: {hijri: "09-19"}
+    confirm: true
+    importance: medium
+    tone: reflective
+    post_time: morning
+    notes: Anniversary of Sheikh Zayed's passing (19 Ramadan); about giving and his humanitarian legacy.
+
+  - key: eid-al-fitr
+    name: Eid Al Fitr
+    rule: {hijri: "10-01"}
+    confirm: true
+    importance: high
+    tone: celebratory
+    post_time: morning
+    notes: "Eid Mubarak. Publish on the morning of Eid, once the date is officially announced."
+
+  - key: arafat-day
+    name: Arafat Day
+    rule: {hijri: "12-09"}
+    confirm: true
+    importance: optional
+    tone: reflective
+    post_time: morning
+
+  - key: eid-al-adha
+    name: Eid Al Adha
+    rule: {hijri: "12-10"}
+    confirm: true
+    importance: high
+    tone: celebratory
+    post_time: morning
+    notes: "Eid Al Adha Mubarak."
+
+  - key: islamic-new-year
+    name: Islamic New Year
+    rule: {hijri: "01-01"}
+    confirm: true
+    importance: medium
+    tone: warm
+    post_time: morning
+    notes: Hijri New Year ({hijri_year} AH).
+
+  - key: prophets-birthday
+    name: Prophet Muhammad's Birthday
+    rule: {hijri: "03-12"}
+    confirm: true
+    importance: optional
+    tone: reflective
+    post_time: morning
+
+  # ---------------------------------------------------------------- other communities
+  - key: diwali
+    name: Diwali
+    rule: {dates: {2026: "11-08", 2027: "10-29"}}
+    confirm: true
+    importance: optional
+    tone: warm
+    post_time: morning
+    notes: Dubai's Indian community is large; a short, warm greeting fits. Keep it simple.
+
+  - key: christmas
+    name: Christmas
+    rule: {fixed: "12-25"}
+    importance: optional
+    tone: warm
+    post_time: morning
+
+  - key: international-womens-day
+    name: International Women's Day
+    rule: {fixed: "03-08"}
+    importance: optional
+    tone: warm
+    post_time: morning

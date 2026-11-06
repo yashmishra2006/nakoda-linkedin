@@ -1,0 +1,15 @@
+[Unit]
+Description=Nakoda LinkedIn desk (one tick)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=__DIR__
+EnvironmentFile=-__DIR__/.env
+ExecStart=__DIR__/.venv/bin/python -m desk tick
+# A tick with nothing to do takes a second; a planning pass with research and
+# image checks can take 10-20 minutes.
+TimeoutStartSec=40min
+Nice=10
+MemoryMax=1500M
